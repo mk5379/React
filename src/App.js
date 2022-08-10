@@ -1,72 +1,46 @@
-import React from "react";
-
-class Item extends React.Component {
-  render() {
-    return (
-      <li>
-        {this.props.name} = ${this.props.price}.
-      </li>
-    )
-  }
-}
-
-class AddForm extends React.Component {
-
-  nameRef = React.createRef()
-  priceRef = React.createRef()
-
-  add = () => {
-    let name = this.nameRef.current.value
-    let price = this.priceRef.current.value
-    this.props.add(name,price)
-  }
-
-  render() {
-    return(
-      <div>
-        <input type = "text" ref={this.nameRef}/>
-        <input type = "text" ref={this.priceRef}/>
-        <button onClick={this.add}>Click</button>
-      </div>
-    )
-  }
-}
-
-class App extends React.Component {
-  state = {
-    items : [
-      {id: 1, name: 'Apple', price: 2.1},
-      {id: 2, name: 'Orange', price: 1.1},      
-    ]
-  }
-
+import React from "react"
+import Main from "./Main";
+import Menu from "./Menu";
+import Add from "./Add";  
+import "./cus/css/cus.css"
   
+  
+  class Apple extends React.Component {
+    render() {
+        let width = 110;
+        let height = 50;
+        const mk = {
+            one : {
+                backgroundColor : "black",
+                color : "white"
+            },
 
-  add = (name,price) => {
-    let id = this.state.items.length + 1
-    
+            two : {
+                border : "1px solid #007bff",
+                height : height-width,
+                width : width,
+                backgroundColor : "#dc2626",
+                color: "white"
+            }
+        }
+        return (
+            <div>
+                <Main>
+                    <div className="background">
+                        <h1 style={mk.one}>Hello React</h1>
+                        <h3>Hello World</h3>
+                        <p>I'm  Min Khant.</p>
+                        <button className="btn">Click me</button>
+                    </div>
 
-    this.setState({
-      items : [
-        ...this.state.items,
-        {id, name, price}
-      ]
-    })
+                </Main>
+                <Menu>
+                    <h3 style={mk.two}>Hello,I'm Min Khant.</h3>
+                </Menu>
+                <Add></Add>
+            </div>
+        )
+    }
   }
 
-  render() {
-    return (
-      <div>
-        <h3>My Favorite Fruits</h3>
-        <AddForm add= {this.add}/>
-        <ul>
-          {this.state.items.map ( i=> {
-            return <Item key={i.id} name ={i.name} price= {i.price}/>
-          })}
-        </ul>        
-      </div>
-    )
-  }
-}
-
-export default App;
+export default Apple;

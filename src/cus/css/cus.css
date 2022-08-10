@@ -1,0 +1,25 @@
+.background {
+  background-color: #007bff;
+  color: #ffffff;
+}
+.background h3 {
+  color: #dc2626;
+}
+.background p {
+  color: #facc15;
+}
+
+.btn {
+  background-color: #facc15;
+  color: #dc2626;
+  border: 0;
+  border-radius: 15px;
+  padding: 10px;
+  transition: 0.5s;
+}
+.btn:hover {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=cus.css.map */

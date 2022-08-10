@@ -8,9 +8,9 @@ class Main extends React.Component {
             </div>
         )
     }
-}
-
-class Menu extends React.Component {
+  }
+  
+  class Menu extends React.Component {
     render() {
         return (
             <div>
@@ -18,14 +18,14 @@ class Menu extends React.Component {
             </div>
         )
     }
-}
-
-class App extends React.Component {
+  }
+  
+  class Apple extends React.Component {
     render() {
         return (
             <div>
                 <Main>
-                    <h1 style={{background : 'blue',color : 'white',padding : 200}}>Hello React</h1>
+                    <h1 style={{background : 'blue',color : 'white',padding : 10}}>Hello React</h1>
                 </Main>
                 <Menu>
                     <h3>Hello,I'm Min Khant.</h3>
@@ -33,6 +33,6 @@ class App extends React.Component {
             </div>
         )
     }
-}
+  }
 
-export default App;
+export default Apple;
