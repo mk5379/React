@@ -1,5 +1,6 @@
 import React from "react";
 
+
 class Item extends React.Component {
   render() {
     return (
@@ -26,7 +27,7 @@ class AddForm extends React.Component {
       <div>
         <input type = "text" ref={this.nameRef}/>
         <input type = "text" ref={this.priceRef}/>
-        <button onClick={this.add}>Click</button>
+        <button className="btn btn-outline" onClick={this.add}>Click</button>
       </div>
     )
   }

@@ -1,46 +1,36 @@
-import React from "react"
-import Main from "./Main";
-import Menu from "./Menu";
-import Add from "./Add";  
-import "./cus/css/cus.css"
-  
-  
-  class Apple extends React.Component {
-    render() {
-        let width = 110;
-        let height = 50;
-        const mk = {
-            one : {
-                backgroundColor : "black",
-                color : "white"
-            },
+import React, { createRef } from "react";
+import Users from "./User";
 
-            two : {
-                border : "1px solid #007bff",
-                height : height-width,
-                width : width,
-                backgroundColor : "#dc2626",
-                color: "white"
-            }
-        }
-        return (
-            <div>
-                <Main>
-                    <div className="background">
-                        <h1 style={mk.one}>Hello React</h1>
-                        <h3>Hello World</h3>
-                        <p>I'm  Min Khant.</p>
-                        <button className="btn">Click me</button>
-                    </div>
+let App = (prpos) => {
 
-                </Main>
-                <Menu>
-                    <h3 style={mk.two}>Hello,I'm Min Khant.</h3>
-                </Menu>
-                <Add></Add>
-            </div>
-        )
+    let [users,setUsers] = React.useState([
+        {id : 1, user : "Phone Thet Naing", age : "19 Year old"},
+        {id : 1, user : "Khant Zin Tun", age : "20 Year old"},
+    ])
+
+    let userRef = createRef();
+    let ageRef = createRef();
+
+
+    let plus = () => {
+        let id = users.length + 1;
+        let user = userRef.current.value;
+        let age = ageRef.current.value;
+
+        setUsers([
+            ...users,
+            {id,user,age}
+        ])
     }
-  }
 
-export default Apple;
+    return (
+        <ul>
+            {users.map(u => <Users key={u.id} user= {u.user} age ={u.age}/> )} <br></br>
+            <input type = "text" ref={userRef} />
+            <input type = "text" ref={ageRef} />
+            <button onClick={plus} >Plus +</button>
+        </ul>
+    )
+}
+
+export default App;
