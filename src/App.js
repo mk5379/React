@@ -1,36 +1,41 @@
 import React, { createRef } from "react";
-import Users from "./User";
 
-let App = (prpos) => {
+const MyContext = React.createContext()
 
-    let [users,setUsers] = React.useState([
-        {id : 1, user : "Phone Thet Naing", age : "19 Year old"},
-        {id : 1, user : "Khant Zin Tun", age : "20 Year old"},
-    ])
-
-    let userRef = createRef();
-    let ageRef = createRef();
-
-
-    let plus = () => {
-        let id = users.length + 1;
-        let user = userRef.current.value;
-        let age = ageRef.current.value;
-
-        setUsers([
-            ...users,
-            {id,user,age}
-        ])
-    }
-
+const App = props => {
     return (
-        <ul>
-            {users.map(u => <Users key={u.id} user= {u.user} age ={u.age}/> )} <br></br>
-            <input type = "text" ref={userRef} />
-            <input type = "text" ref={ageRef} />
-            <button onClick={plus} >Plus +</button>
-        </ul>
+        <MyContext.Provider value = {"Hello World!"} >
+            <Nav/>
+        </MyContext.Provider>
+        
     )
 }
+
+const Nav = props => {
+    return <Brand/>
+}
+const Brand = props => {
+    return(
+        <MyContext.Consumer>
+            {value => <h1>{value}</h1>}
+        </MyContext.Consumer>
+    )
+}
+
+ //(or)
+
+ //  const MyContext = React.createContext("Hello World!") 
+
+ //  const App = props => {
+ //     return <Nav/>
+ // }
+                        
+ // const Nav = props => {
+ //     return <Brand/>
+ // }
+ // const Brand = props => {
+ //     const value = React.useContext(MyContext)
+ //     return <h1>{value}
+ // }
 
 export default App;
